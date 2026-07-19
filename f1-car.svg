@@ -1,0 +1,198 @@
+<svg viewBox="0 0 1000 390" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#69f0a0"/>
+      <stop offset="100%" stop-color="#0e4429"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#39d353"/>
+      <stop offset="100%" stop-color="#145c30"/>
+    </linearGradient>
+    <radialGradient id="wheelGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#3f444d"/>
+      <stop offset="100%" stop-color="#08090b"/>
+    </radialGradient>
+    <radialGradient id="underglow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#39d353" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#39d353" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="chassisSheen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#22262e"/>
+      <stop offset="55%" stop-color="#111318"/>
+      <stop offset="100%" stop-color="#0b0c0f"/>
+    </linearGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softglow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+  </defs>
+
+  <style>
+    .wheel { transform-box: fill-box; transform-origin: center; animation: spin 1.1s linear infinite; }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    .car-body { animation: idle 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+    @keyframes idle { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-4px); } }
+
+    .pulse { animation: pulseGlow 2s ease-in-out infinite; }
+    @keyframes pulseGlow { 0%, 100% { opacity: 0.35; } 50% { opacity: 0.75; } }
+
+    .shimmer { animation: shimmer 1.4s ease-in-out infinite; }
+    @keyframes shimmer {
+      0%   { opacity: 0; transform: translateX(0) scaleY(1); }
+      40%  { opacity: 0.6; }
+      100% { opacity: 0; transform: translateX(14px) scaleY(1.3); }
+    }
+  </style>
+
+  <rect width="1000" height="390" fill="#080b10"/>
+  <line x1="40" y1="285" x2="960" y2="285" stroke="#5a6472" stroke-width="2" opacity="0.4"/>
+
+  <!-- underbody glow, sits behind the car -->
+  <ellipse class="pulse" cx="500" cy="255" rx="320" ry="26" fill="url(#underglow)" filter="url(#softglow)"/>
+
+  <g class="car-body">
+
+    <!-- rear beam wing (lower, thinner) -->
+    <rect x="770" y="205" width="60" height="7" rx="2" fill="#111318" stroke="#4a5568" stroke-width="1"/>
+
+    <!-- main rear wing -->
+    <rect x="792" y="120" width="16" height="80" fill="url(#blueGrad)" stroke="#f5f5f5" stroke-width="0.75" filter="url(#glow)"/>
+    <path d="M 760 108 Q 800 96 840 112 L 840 128 Q 800 114 760 124 Z" fill="url(#blueGrad)" filter="url(#glow)"/>
+    <!-- DRS slot line -->
+    <line x1="762" y1="118" x2="838" y2="118" stroke="#f5f5f5" stroke-width="1" opacity="0.6"/>
+    <rect x="762" y="198" width="78" height="9" rx="2" fill="#111318" stroke="#4a5568"/>
+
+    <!-- rear diffuser fins -->
+    <g opacity="0.9">
+      <path d="M 700 218 L 760 214 L 760 222 L 700 224 Z" fill="#111318" stroke="#4a5568" stroke-width="1"/>
+      <path d="M 700 224 L 758 227 L 758 233 L 700 232 Z" fill="#111318" stroke="#4a5568" stroke-width="1"/>
+    </g>
+
+    <!-- rain light -->
+    <circle cx="748" cy="165" r="4" fill="url(#redGrad)" filter="url(#glow)"/>
+
+    <!-- shark fin engine cover -->
+    <path d="M 560 170 Q 600 100 655 120 L 720 165 L 655 172 Z" fill="url(#chassisSheen)" stroke="#4a5568" stroke-width="1.5"/>
+
+    <!-- airbox -->
+    <path d="M 545 150 Q 580 118 615 130 L 615 168 L 545 168 Z" fill="#111318" stroke="#4a5568" stroke-width="1.5"/>
+    <!-- cooling louvers -->
+    <line x1="552" y1="140" x2="600" y2="132" stroke="#5a6472" stroke-width="1" opacity="0.6"/>
+    <line x1="552" y1="148" x2="605" y2="140" stroke="#5a6472" stroke-width="1" opacity="0.5"/>
+
+    <!-- main chassis / floor -->
+    <path d="M 160 225
+             L 215 225
+             Q 250 178 320 172
+             L 545 172
+             L 655 178
+             L 750 205
+             L 750 230
+             L 660 236
+             L 250 236
+             Q 195 236 160 225 Z"
+          fill="url(#chassisSheen)" stroke="#4a5568" stroke-width="1.5"/>
+
+    <!-- crisp specular highlight along chassis top edge -->
+    <path d="M 250 178 Q 350 172 545 172 L 655 178" fill="none" stroke="#f5f5f5" stroke-width="1" opacity="0.55"/>
+
+    <!-- venturi floor edge / floor edge wing -->
+    <path d="M 220 232 L 700 232 L 700 240 Q 460 246 220 240 Z" fill="#111318" stroke="#4a5568" stroke-width="1"/>
+
+    <!-- flowing livery: sidepod swoosh (bright green) -->
+    <path d="M 330 185
+             Q 420 178 545 188
+             Q 500 200 420 200
+             Q 370 200 330 195 Z"
+          fill="url(#redGrad)"/>
+    <!-- flowing livery: lower swoosh (mid green) -->
+    <path d="M 340 208
+             Q 440 202 545 210
+             Q 480 220 400 220
+             Q 365 220 340 214 Z"
+          fill="url(#blueGrad)"/>
+    <!-- white pinstripe following the swoosh -->
+    <path d="M 330 183 Q 420 176 545 186" fill="none" stroke="#f5f5f5" stroke-width="1.5" opacity="0.75"/>
+
+    <!-- sidepod inlet -->
+    <path d="M 400 178 Q 420 172 440 178 Q 430 190 415 190 Q 402 188 400 178 Z" fill="#05060a" stroke="#4a5568" stroke-width="1"/>
+
+    <!-- suspension arms (front) -->
+    <line x1="240" y1="200" x2="205" y2="222" stroke="#5a6472" stroke-width="2.5"/>
+    <line x1="255" y1="192" x2="205" y2="216" stroke="#5a6472" stroke-width="2"/>
+    <!-- suspension arms (rear) -->
+    <line x1="700" y1="205" x2="668" y2="228" stroke="#5a6472" stroke-width="2.5"/>
+    <line x1="712" y1="196" x2="668" y2="222" stroke="#5a6472" stroke-width="2"/>
+
+    <!-- cockpit + helmet -->
+    <path d="M 405 178 Q 428 148 470 148 Q 505 148 518 178 Z" fill="#04060a" stroke="#f5f5f5" stroke-width="1.5"/>
+    <circle cx="462" cy="168" r="11" fill="#1a1d24" stroke="#f5f5f5" stroke-width="1"/>
+    <path d="M 454 163 Q 462 158 470 163" stroke="url(#blueGrad)" stroke-width="2" fill="none"/>
+
+    <!-- halo -->
+    <path d="M 412 158 Q 462 100 516 158" fill="none" stroke="#4a5568" stroke-width="9" stroke-linecap="round"/>
+    <path d="M 412 158 Q 462 100 516 158" fill="none" stroke="url(#blueGrad)" stroke-width="3" stroke-linecap="round" filter="url(#glow)"/>
+    <path d="M 412 158 L 412 180 M 516 158 L 516 180" stroke="#4a5568" stroke-width="8" stroke-linecap="round"/>
+
+    <!-- mirrors -->
+    <line x1="380" y1="165" x2="365" y2="152" stroke="#5a6472" stroke-width="2"/>
+    <rect x="352" y="145" width="16" height="9" rx="2" fill="#111318" stroke="#4a5568"/>
+
+    <!-- nose cone, low + long -->
+    <path d="M 160 224 Q 90 219 40 213 Q 24 211 40 224 Q 90 232 160 231 Z" fill="url(#redGrad)" filter="url(#glow)"/>
+    <!-- nose pinstripe -->
+    <path d="M 55 216 Q 110 220 160 226" stroke="#f5f5f5" stroke-width="1" opacity="0.6" fill="none"/>
+
+    <!-- front wing: multi-element -->
+    <rect x="20" y="235" width="170" height="9" rx="2" fill="url(#redGrad)" stroke="#f5f5f5" stroke-width="0.6" filter="url(#glow)"/>
+    <rect x="30" y="226" width="150" height="6" rx="2" fill="url(#blueGrad)" opacity="0.85"/>
+    <!-- endplates -->
+    <rect x="16" y="215" width="10" height="34" fill="#111318" stroke="#4a5568"/>
+    <rect x="184" y="215" width="10" height="34" fill="#111318" stroke="#4a5568"/>
+    <!-- front wing flap tips -->
+    <path d="M 16 215 Q 8 218 12 226" fill="none" stroke="#5a6472" stroke-width="1.5"/>
+
+    <!-- badge -->
+    <circle cx="470" cy="182" r="16" fill="#f5f5f5" stroke="url(#blueGrad)" stroke-width="2.5"/>
+    <text x="470" y="188" font-family="VT323, monospace" font-size="19" fill="#0a0c0f" text-anchor="middle" font-weight="bold">F1</text>
+
+    <!-- brake duct hints -->
+    <circle cx="215" cy="228" r="5" fill="#05060a" stroke="#5a6472" stroke-width="1"/>
+    <circle cx="700" cy="212" r="5" fill="#05060a" stroke="#5a6472" stroke-width="1"/>
+
+    <!-- rear wheel -->
+    <g class="wheel">
+      <circle cx="695" cy="255" r="42" fill="url(#wheelGrad)" stroke="#5a6472" stroke-width="2.5"/>
+      <circle cx="695" cy="255" r="30" fill="none" stroke="#2a2e35" stroke-width="1"/>
+      <circle cx="695" cy="255" r="14" fill="#080b10" stroke="url(#redGrad)" stroke-width="2"/>
+      <line x1="695" y1="215" x2="695" y2="295" stroke="#5a6472" stroke-width="2"/>
+      <line x1="655" y1="255" x2="735" y2="255" stroke="#5a6472" stroke-width="2"/>
+      <line x1="668" y1="228" x2="722" y2="282" stroke="#5a6472" stroke-width="1.5"/>
+      <line x1="722" y1="228" x2="668" y2="282" stroke="#5a6472" stroke-width="1.5"/>
+    </g>
+
+    <!-- front wheel -->
+    <g class="wheel">
+      <circle cx="210" cy="255" r="36" fill="url(#wheelGrad)" stroke="#5a6472" stroke-width="2.5"/>
+      <circle cx="210" cy="255" r="25" fill="none" stroke="#2a2e35" stroke-width="1"/>
+      <circle cx="210" cy="255" r="12" fill="#080b10" stroke="url(#redGrad)" stroke-width="2"/>
+      <line x1="210" y1="219" x2="210" y2="291" stroke="#5a6472" stroke-width="2"/>
+      <line x1="174" y1="255" x2="246" y2="255" stroke="#5a6472" stroke-width="2"/>
+      <line x1="186" y1="231" x2="234" y2="279" stroke="#5a6472" stroke-width="1.5"/>
+      <line x1="234" y1="231" x2="186" y2="279" stroke="#5a6472" stroke-width="1.5"/>
+    </g>
+
+    <!-- exhaust heat shimmer -->
+    <line class="shimmer" x1="750" y1="200" x2="750" y2="212" stroke="#f5f5f5" stroke-width="1.5" style="animation-delay:0s"/>
+    <line class="shimmer" x1="750" y1="200" x2="750" y2="212" stroke="#f5f5f5" stroke-width="1.5" style="animation-delay:0.5s"/>
+    <line class="shimmer" x1="750" y1="200" x2="750" y2="212" stroke="#f5f5f5" stroke-width="1.5" style="animation-delay:1s"/>
+
+  </g>
+
+  <text x="500.0" y="335" font-family="Georgia, serif" font-style="italic" font-size="18" fill="#f5f5f5" text-anchor="middle" opacity="0.9">YOU KNOW WHAT IT IS - SIMPLY LOVELY</text>
+  <text x="500.0" y="365" font-family="VT323, monospace" font-size="16" fill="#5a6472" text-anchor="middle">rm-f1@github ~ $ lights out and away we go</text>
+</svg>

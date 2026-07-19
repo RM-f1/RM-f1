@@ -1,0 +1,24 @@
+<svg viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .cell {
+      opacity: 0;
+      transform: translateY(8px);
+      animation: fadeUp 0.5s ease-out forwards;
+    }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+  <rect width="400" height="150" rx="8" fill="#0d1117" stroke="#39d353" stroke-width="1.5"/>
+  <text x="24" y="28" font-family="VT323, monospace" font-size="18" fill="#39d353">rm-f1@github ~ $ ./leetcode.sh</text>
+  <line x1="0" y1="36" x2="400" y2="36" stroke="#6e7681" stroke-width="1"/>
+
+  <g class="cell" style="animation-delay:0.25s">
+    <text x="24" y="90" font-family="VT323, monospace" font-size="46" fill="#ffb347">3</text>
+    <text x="90" y="90" font-family="VT323, monospace" font-size="20" fill="#6e7681">day streak</text>
+  </g>
+
+  <g class="cell" style="animation-delay:0.55s">
+    <text x="24" y="120" font-family="VT323, monospace" font-size="15" fill="#26a641">best: 3 days</text>
+  </g>
+</svg>
