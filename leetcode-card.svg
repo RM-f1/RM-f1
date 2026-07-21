@@ -14,11 +14,11 @@
   <line x1="0" y1="36" x2="400" y2="36" stroke="#6e7681" stroke-width="1"/>
 
   <g class="cell" style="animation-delay:0.25s">
-    <text x="24" y="90" font-family="VT323, monospace" font-size="46" fill="#ffb347">4</text>
+    <text x="24" y="90" font-family="VT323, monospace" font-size="46" fill="#ffb347">5</text>
     <text x="90" y="90" font-family="VT323, monospace" font-size="20" fill="#6e7681">day streak</text>
   </g>
 
   <g class="cell" style="animation-delay:0.55s">
-    <text x="24" y="120" font-family="VT323, monospace" font-size="15" fill="#26a641">best: 4 days</text>
+    <text x="24" y="120" font-family="VT323, monospace" font-size="15" fill="#26a641">best: 5 days</text>
   </g>
 </svg>
